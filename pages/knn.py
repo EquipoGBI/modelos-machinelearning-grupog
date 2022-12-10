@@ -10,21 +10,35 @@ warnings.filterwarnings("ignore")
 from sklearn.metrics import classification_report,confusion_matrix
 import streamlit as st
 
-intc = yf.Ticker('INTC')
+
+st.set_page_config(page_title="KNN")
+
+st.markdown("# KNN")
+st.sidebar.header("KNN")
+st.write(
+    """El contenido de la página permite visualizar resultados de predicción de precios de acciones utilizando el modelo KNN."""
+)
+
+ticker = st.text_input('Etiqueta de cotización', 'INTC')
+st.write('La etiqueta de cotización actual es', ticker)
+
+intc = yf.Ticker(ticker)
 hist = intc.history(period="max", auto_adjust=True)
 hist.head()
 
-hist['Open-Close'] = hist.Open - hist.Close
-hist['High-Low'] = hist.High - hist.Low
+df = hist
 
-X = hist[['Open-Close', 'High-Low']]
+df['Open-Close'] = df.Open - df.Close
+df['High-Low'] = df.High - df.Low
+
+X = df[['Open-Close', 'High-Low']]
 X.head()
 
-y = np.where(hist['Close'].shift(-1) > hist['Close'], 1, 0)
+y = np.where(df['Close'].shift(-1) > df['Close'], 1, 0)
 y
 
 split_percentage = 0.7
-split = int(split_percentage*len(hist))
+split = int(split_percentage*len(df))
 
 X_train = X[:split]
 y_train = y[:split]
@@ -43,7 +57,12 @@ print("Resultados esperados:")
 print(y_test)
 st.write(y_test)
 
+# Datos predecidos 
+st.write("Dataframe con los resultados predecidos")
+df['Predicted_Signal'] = knn.predict(X)
+
 print(accuracy_score(test_data_predicted, y_test))
+# Precisión del modelo
 st.write(accuracy_score(test_data_predicted, y_test))
 
 tasa_error = []
