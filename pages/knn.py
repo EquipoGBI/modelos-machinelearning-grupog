@@ -90,7 +90,7 @@ print(classification_report(y_test,pred))
 
 st.markdown(
     """
-    # Recomendaciones:
+    ### Recomendaciones:
     - Conocer el concepto básico de KNN y cómo se utilizan para la clasificación de datos.
     - Elegir un conjunto de datos adecuado para el modelo y evaluar los resultados.
     - Dividir el conjunto de datos en conjuntos de entrenamiento y prueba para evaluar el desempeño.
