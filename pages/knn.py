@@ -19,10 +19,10 @@ st.write(
     """El contenido de la página permite visualizar resultados de predicción de precios de acciones utilizando el modelo KNN."""
 )
 
-ticker = st.text_input('Etiqueta de cotización', 'INTC')
-st.write('La etiqueta de cotización actual es', ticker)
+ticker1 = st.text_input('Etiqueta de cotización', 'INTC')
+st.write('La etiqueta de cotización actual es', ticker1)
 
-intc = yf.Ticker(ticker)
+intc = yf.Ticker(ticker1)
 hist = intc.history(period="max", auto_adjust=True)
 hist.head()
 
