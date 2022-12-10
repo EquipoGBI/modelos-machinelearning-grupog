@@ -1,5 +1,4 @@
-from datetime import date
-from datetime import datetime
+from datetime import datetime, timedelta, timezone, date
 from sklearn.metrics import precision_score
 import os
 import yfinance as yf
@@ -63,9 +62,8 @@ st.write("La columna de Target devuelve valores de 0 y 1, donde 1 significa que 
 
 st.write("Ahora, vamos a considerar datos a partir del año 1990, debido a que en el mercado de valores, tener data de registros muy antiguos pueden ser contraproducentes, puesto que pudieron existir cambios significantes en el mercado fundalmentalmente.")
 start_date = datetime.strptime('1990-01-01', '%Y-%m-%d')
-today = date.today()
-today_date = datetime.strptime(today, '%Y-%m-%d')
-sp500 = sp500.loc[start_date:today_date].copy()
+today = datetime.now().replace(tzinfo=timezone(offset=timedelta()))
+sp500 = sp500.loc[start_date:today].copy()
 sp500
 
 
