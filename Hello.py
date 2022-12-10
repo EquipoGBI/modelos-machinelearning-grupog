@@ -1,4 +1,6 @@
 import streamlit as st
+
+st.sidebar.header("Inicio")
 st.set_page_config(
     page_title="Tarea Semana 12",
     page_icon="👋",
