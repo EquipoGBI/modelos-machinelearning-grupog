@@ -35,7 +35,6 @@ X = df[['Open-Close', 'High-Low']]
 X.head()
 
 y = np.where(df['Close'].shift(-1) > df['Close'], 1, 0)
-y
 
 split_percentage = 0.7
 split = int(split_percentage*len(df))
@@ -60,9 +59,11 @@ st.write(y_test)
 # Datos predecidos 
 st.write("Dataframe con los resultados predecidos")
 df['Predicted_Signal'] = knn.predict(X)
+df
 
 print(accuracy_score(test_data_predicted, y_test))
 # Precisión del modelo
+st.write("Precisión del modelo")
 st.write(accuracy_score(test_data_predicted, y_test))
 
 tasa_error = []
