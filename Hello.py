@@ -1,27 +1,40 @@
 import streamlit as st
 st.set_page_config(
-    page_title="Hello",
+    page_title="Tarea Semana 12",
     page_icon="👋",
 )
 
-st.write("# Welcome to Streamlit! 👋")
+st.write("# Despliegue web de modelos del Grupo G 🤖")
 
-st.sidebar.success("Select a demo above.")
+st.sidebar.success("Seleccione un modelo del menú")
 
 st.markdown(
     """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### ¿Quieres aprender más?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+    # Grupo G - Integrantes:
+    | Nombre | Participación|
+    |--|--|
+    | Oscar Stalyn, Yanfer Laura | 1|
+    | Jorge Luis, Marin Evangelista | 2 |
+    | Diego Tharlez Montalvo Ortega | 3|
+    | Jorge Luis Quispe Alarcon | 4|
+    | Wilker Edison,Atalaya Ramirez | - |
+    | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN)|
+    | Carlos Daniel Tarmeño Noriega | K-Vecinos Cercanos(KNN) |
+    | Nathaly Nicole Pichilingue Pimentel | Máquinas de vectores de soporte(SVC) y Random Forest(RF) |
+
+    ### Especificaciones:
+    **Donde muestra las predicciones/los resultados:**
+    - Gráficamente. 
+    - Númericamente los valores de las predicciones (print de dataframe con la predicción o clasificación).
+    - De modo textual presentar una recomendación.
+    
+    **Donde se muestra el EDA:**
+    - Ploteo de los precios reales.
+    (Ploteo de media móvil los precios reales.)
+
+    **Donde el usuario pueda indicar:**
+    - El modelo ejecutar.
+    - La acción o instrumento financiero que quiera analizar.
+    - El rango de fechas.
 """
 )
