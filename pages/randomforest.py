@@ -1,4 +1,5 @@
 from datetime import date
+from datetime import datetime
 from sklearn.metrics import precision_score
 import os
 import yfinance as yf
@@ -61,9 +62,9 @@ sp500
 st.write("La columna de Target devuelve valores de 0 y 1, donde 1 significa que el precio de la acción de mañana es mayor al precio de cierre de la acción de hoy.")
 
 st.write("Ahora, vamos a considerar datos a partir del año 1990, debido a que en el mercado de valores, tener data de registros muy antiguos pueden ser contraproducentes, puesto que pudieron existir cambios significantes en el mercado fundalmentalmente.")
-start_date = '1990-01-01'
+start_date = datetime.strptime('1990-01-01', '%Y-%m-%d')
 today = date.today()
-sp500 = sp500.loc[start_date: today].copy()
+sp500 = sp500.loc[start_date:today].copy()
 sp500
 
 
