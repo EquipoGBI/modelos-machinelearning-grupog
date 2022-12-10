@@ -63,7 +63,7 @@ st.write("La columna de Target devuelve valores de 0 y 1, donde 1 significa que 
 
 st.write("Ahora, vamos a considerar datos a partir del año 1990, debido a que en el mercado de valores, tener data de registros muy antiguos pueden ser contraproducentes, puesto que pudieron existir cambios significantes en el mercado fundalmentalmente.")
 start_date = datetime.strptime(
-    '1990-01-01 00:00:00 UTC', '%Y-%m-%d %H:%M:%S')
+    '1990-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')
 today = datetime.now().replace(tzinfo=pytz.UTC)
 sp500 = sp500.loc[start_date:today].copy()
 sp500
