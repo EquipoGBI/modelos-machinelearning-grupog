@@ -45,13 +45,13 @@ y_train = y[:split]
 X_test = X[split:]
 y_test = y[split:]
 
-knn = KNeighborsClassifier(n_neighbors=15)
-knn.fit(X_train, y_train)
+knn = KNeighborsClassifier(n_neighbors=15).fit(X_train, y_train)
+# knn.fit(X_train, y_train)
 
 print("Predicciones del clasificador:")
-test_data_predicted = knn.predict(X_test)
-print(test_data_predicted)
-st.write(test_data_predicted)
+# test_data_predicted = knn.predict(X_test)
+# print(test_data_predicted)
+st.write(knn.predict(X_test))
 print("Resultados esperados:")
 print(y_test)
 st.write(y_test)
@@ -61,11 +61,13 @@ st.write("Dataframe con los resultados predecidos")
 df['Predicted_Signal'] = knn.predict(X)
 df
 
-print(accuracy_score(test_data_predicted, y_test))
+print(accuracy_score(knn.predict(X_test), y_test))
 # Precisión del modelo
 st.write("Precisión del modelo")
-st.write(accuracy_score(test_data_predicted, y_test))
+st.write(accuracy_score(knn.predict(X_test), y_test))
 
+
+st.write("Grafica de la tasa de error vs. valor de K")
 tasa_error = []
 for i in range(1,40):
   knn_g = KNeighborsClassifier(n_neighbors=i)
