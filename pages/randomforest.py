@@ -91,8 +91,9 @@ st.write("Nuestro puntaje de precisión es", p_score1)
 st.write("Realizamos una gráfica con plot para comparar nuestra predicción con el Target actual")
 
 combined = pd.concat([test["Target"], preds], axis=1)
-figure = combined.plot()
-st.pyplot(figure)
+f = combined.plot()
+graph = f.figure
+st.pyplot(graph)
 
 
 def predict(train, test, predictors, model):
