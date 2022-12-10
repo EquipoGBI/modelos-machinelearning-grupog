@@ -51,17 +51,17 @@ knn.fit(X_train, y_train)
 print("Predicciones del clasificador:")
 # test_data_predicted = knn.predict(X_test)
 # print(test_data_predicted)
-st.write(knn.predict(X_test))
-print("Resultados esperados:")
-print(y_test)
-st.write(y_test)
+# st.write(knn.predict(X_test))
+# print("Resultados esperados:")
+# print(y_test)
+# st.write(y_test)
 
 # Datos predecidos 
 st.write("Dataframe con los resultados predecidos")
 df['Predicted_Signal'] = knn.predict(X)
 df
 
-print(accuracy_score(knn.predict(X_test), y_test))
+# print(accuracy_score(knn.predict(X_test), y_test))
 # Precisión del modelo
 st.write("Precisión del modelo")
 st.write(accuracy_score(knn.predict(X_test), y_test))
