@@ -1,3 +1,4 @@
+from datetime import date
 from sklearn.metrics import precision_score
 import os
 import yfinance as yf
@@ -17,8 +18,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-darkgrid')
 
+
 # To ignore warnings
 warnings.filterwarnings("ignore")
+
 
 st.set_page_config(page_title="Random Forest")
 
@@ -59,7 +62,8 @@ st.write("La columna de Target devuelve valores de 0 y 1, donde 1 significa que 
 
 st.write("Ahora, vamos a considerar datos a partir del año 1990, debido a que en el mercado de valores, tener data de registros muy antiguos pueden ser contraproducentes, puesto que pudieron existir cambios significantes en el mercado fundalmentalmente.")
 start_date = '1990-01-01'
-sp500 = sp500.loc[start_date:].copy()
+today = date.today()
+sp500 = sp500.loc[start_date: today].copy()
 sp500
 
 
