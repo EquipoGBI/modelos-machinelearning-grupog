@@ -45,8 +45,8 @@ y_train = y[:split]
 X_test = X[split:]
 y_test = y[split:]
 
-knn = KNeighborsClassifier(n_neighbors=15).fit(X_train, y_train)
-# knn.fit(X_train, y_train)
+knn = KNeighborsClassifier(n_neighbors=15)
+knn.fit(X_train, y_train)
 
 print("Predicciones del clasificador:")
 # test_data_predicted = knn.predict(X_test)
