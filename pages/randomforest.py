@@ -91,7 +91,8 @@ st.write("Nuestro puntaje de precisión es", p_score1)
 st.write("Realizamos una gráfica con plot para comparar nuestra predicción con el Target actual")
 
 combined = pd.concat([test["Target"], preds], axis=1)
-combined.plot()
+figure = combined.plot()
+st.pyplot(figure)
 
 
 def predict(train, test, predictors, model):
@@ -182,6 +183,3 @@ st.write("Nuestro puntaje de precisión del modelo es", p_scoremn)
 
 st.write("Vemos el porcentaje que logró predecir el modelo de que el precio iba a subir y/o bajar")
 st.table(predictions["Target"].value_counts() / predictions.shape[0])
-
-st.write("Vemos nuestras predicciones")
-st.table(predictions)
