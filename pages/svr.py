@@ -26,7 +26,7 @@ st.write(
     """En esta página podrás ver cómo funciona el modelo SVR en la predicción del mercado de valores"""
 )
 
-ticker = st.text_input('Etiqueta de cotización', 'NFLX')
+ticker = st.text_input('Etiqueta de cotización', 'BVN')
 st.write('La etiqueta de cotización actual es', ticker)
 
 tic = yf.Ticker(ticker)
