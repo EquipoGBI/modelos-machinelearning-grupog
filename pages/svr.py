@@ -81,9 +81,6 @@ df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
 st.write("Dataframe con retornos de estrategia acumulativos")
 df
 
-st.write("Precisión del modelo")
-st.write(accuracy_score(SVR.predict(X_test), y_test))
-
 st.write("Devoluciones de la estrategia de trama frente a las devoluciones originales")
 fig = plt.figure()
 plt.plot(df['Cum_Ret'], color='green')
