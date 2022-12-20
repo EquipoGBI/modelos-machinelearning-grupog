@@ -28,7 +28,7 @@ st.write(
 
 ticker = st.text_input('Etiqueta de cotización', 'BVN')
 st.write('La etiqueta de cotización actual es', ticker)
-
+st.write('Compañía de Minas Buenaventura S.A.A. (BVN)') 
 tic = yf.Ticker(ticker)
 tic
 
@@ -81,6 +81,8 @@ df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
 st.write("Dataframe con retornos de estrategia acumulativos")
 df
 
+st.write("Precisión del modelo")
+st.write(accuracy_score(SVR.predict(X_test), y_test))
 
 st.write("Devoluciones de la estrategia de trama frente a las devoluciones originales")
 fig = plt.figure()
