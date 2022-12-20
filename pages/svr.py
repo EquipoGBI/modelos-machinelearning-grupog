@@ -48,11 +48,11 @@ df[['Close',str(future_days)+'_Day_Stock_Forecast']]
 
 X=np.array(df[['Close']])
 X=X[:df.shape[0] - future_days]
-print(X)
+st.write(X)
 
 y=np.array(df[str(future_days)+'_Day_Stock_Forecast'])
 y=y[:-future_days]
-print(y)
+st.write(y)
 
 x_train, x_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
 
@@ -60,12 +60,12 @@ svr_rbf = SVR(kernel='rbf', C=1e3, gamma = 0.00001)
 svr_rbf.fit(x_train, y_train)
 
 svr_rbf_confidence = svr_rbf.score(x_test, y_test)
-print('svr_rbf accuracy: ',svr_rbf_confidence)
+st.write('svr_rbf accuracy: ',svr_rbf_confidence)
 
 svm_prediction = svr_rbf.predict(x_test)
-print(svm_prediction)
+st.write(svm_prediction)
 
-print(y_test)
+st.write(y_test)
 
 st.figure(figsize=(12,4))
 st.plot(svm_prediction, label='Prediction', lw=2, alpha=.7)
