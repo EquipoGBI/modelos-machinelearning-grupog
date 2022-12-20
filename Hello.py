@@ -16,7 +16,7 @@ st.markdown(
     |--|--|
     | Oscar Stalyn, Yanfer Laura | 1|
     | Jorge Luis, Marin Evangelista | 2 |
-    | Diego Tharlez Montalvo Ortega | 3|
+    | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR)|
     | Jorge Luis Quispe Alarcon | 4|
     | Wilker Edison,Atalaya Ramirez | - |
     | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN)|
