@@ -38,41 +38,54 @@ hist
 df = hist
 df.info()
 
-df = df.set_index(pd.DatetimeIndex(df['Date'].values))
+# Crea variables predictoras
+df['Open-Close'] = df.Open - df.Close
+df['High-Low'] = df.High - df.Low
+
+# Guarda todas las variables predictoras en una variable X
+X = df[['Open-Close', 'High-Low']]
+X.head()
+
+# Variables objetivas
+y = np.where(df['Close'].shift(-1) > df['Close'], 1, 0)
+
+split_percentage = 0.8
+split = int(split_percentage*len(df))
+
+# Train data set
+X_train = X[:split]
+y_train = y[:split]
+
+# Test data set
+X_test = X[split:]
+y_test = y[split:]
+
+# Support vector Regression
+cls = SVR().fit(X_train, y_train)
+
+df['Predicted_Signal'] = cls.predict(X)
+
+# Calcula los retornos diarios
+df['Return'] = df.Close.pct_change()
+
+# Calcula retornos de estrategia
+df['Strategy_Return'] = df.Return * df.Predicted_Signal.shift(1)
+
+# Calcula retornos acumulativos
+df['Cum_Ret'] = df['Return'].cumsum()
+st.write("Dataframe con retornos acumulativos")
 df
 
-future_days = 5
+# Haz un plot de retornos de estrategia acumulativos
+df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
+st.write("Dataframe con retornos de estrategia acumulativos")
+df
 
-df[str(future_days)+'_Day_Stock_Forecast']=df[['Close']].shift(-future_days)
-df[['Close',str(future_days)+'_Day_Stock_Forecast']]
 
-X=np.array(df[['Close']])
-X=X[:df.shape[0] - future_days]
-st.write(X)
+st.write("Devoluciones de la estrategia de trama frente a las devoluciones originales")
+fig = plt.figure()
+plt.plot(df['Cum_Ret'], color='green')
+plt.plot(df['Cum_Strategy'], color='yellow')
+st.pyplot(fig)
 
-y=np.array(df[str(future_days)+'_Day_Stock_Forecast'])
-y=y[:-future_days]
-st.write(y)
 
-x_train, x_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
-
-svr_rbf = SVR(kernel='rbf', C=1e3, gamma = 0.00001)
-svr_rbf.fit(x_train, y_train)
-
-svr_rbf_confidence = svr_rbf.score(x_test, y_test)
-st.write('svr_rbf accuracy: ',svr_rbf_confidence)
-
-svm_prediction = svr_rbf.predict(x_test)
-st.write(svm_prediction)
-
-st.write(y_test)
-
-st.figure(figsize=(12,4))
-st.plot(svm_prediction, label='Prediction', lw=2, alpha=.7)
-st.plot(y_test, label='Actual', lw=2, alpha=.7)
-st.title('Prediction vs Actual')
-st.ylabel('Stock')
-st.xlabel('Days')
-st.legend()
-st.xticks(rotation=45)
-st.show()
