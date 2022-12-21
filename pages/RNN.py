@@ -21,6 +21,10 @@ Original file is located at
 
 La inferencia variacional de los parámetros de la red neuronal ahora se demuestra en un problema de regresión simple. Por lo tanto se hará uso de una distribución Gaussiana.
 """
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
 import matplotlib.pyplot as plt
 import datetime as dt
 import yfinance as yf
@@ -32,12 +36,11 @@ plt.style.use('seaborn-darkgrid')
 
 # To ignore warnings
 warnings.filterwarnings("ignore")
-
-
+# sklearn
 st.set_page_config(page_title="RNN", page_icon="📈",
                    layout="wide", initial_sidebar_state="expanded")
 
-st.markdown("# PEN")
+st.markdown("# RNN")
 st.sidebar.header("PEN")
 st.markdown(
     """
@@ -56,11 +59,23 @@ st.write('La etiqueta de cotización actual es', ticker)
 tic = yf.Ticker(ticker)
 hist = tic.history(period="max", auto_adjust=True)
 
-st.write("date time")
+st.write("#date time")
 testdf = yf.download("PEN", start="2022-03-31",
                      end=dt.datetime.now(), progress=False)
 testdf
 
-st.write("Realizar la preparación de datos de RNN model entrenamiento ")
+st.write("#Realizar la preparación de datos de RNN model entrenamiento ")
 training_set = hist.iloc[:, 1:2].values
 training_set
+
+st.write("#transformación de minimo y maximo")
+sc = MinMaxScaler(feature_range=(0, 1))
+training_set_scaled = sc.fit_transform(training_set)
+X_train = []
+y_train = []
+
+for i in range(60, 566):
+    X_train.append(training_set_scaled[i-60:i, 0])
+    y_train.append(training_set_scaled[i, 0])
+X_train,  y_train = np.array(X_train), np.array(y_train)
+X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
