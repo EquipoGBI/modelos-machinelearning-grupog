@@ -28,7 +28,6 @@ st.write(
 
 ticker = st.text_input('Etiqueta de cotización', 'AAPL')
 st.write('La etiqueta de cotización actual es', ticker)
-st.write('Apple Inc. (AAPL)') 
 tic = yf.Ticker(ticker)
 tic
 
