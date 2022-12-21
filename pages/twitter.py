@@ -11,14 +11,12 @@ import streamlit as st
 
 ticker = st.text_input('Usuario en ingles a buscar', 'PopBase')
 st.write('El usuario actual es:', ticker)
-tic = yf.Ticker(ticker)
-tic
 
 # Creamos una lista donde guardaremos atributos de c/tweet (datos)
 attributes_container = []
 
 # Usamos TwitterSearchScraper para realizar scrapping y obtener los tweets, estamos seleccionando los útlimos 300 tweets
-for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:'+tic).get_items()):
+for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:'+ticker).get_items()):
     if i>300:
         break
     attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content])
