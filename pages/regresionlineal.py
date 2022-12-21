@@ -38,6 +38,14 @@ hist
 df = hist
 df.info()
 
+st.write("Visualización de valores nulos")
+df.isnull().sum()
+
+st.write("Mapa de calor de las variables")
+import seaborn as sns
+plt.figure(1 , figsize = (17 , 8))
+cor = sns.heatmap(df.corr(), annot = True)
+
 # Crea variables predictoras
 df['Open-Close'] = df.Open - df.Close
 df['High-Low'] = df.High - df.Low
@@ -83,6 +91,6 @@ df
 
 st.write("Devoluciones de la estrategia de trama frente a las devoluciones originales")
 fig = plt.figure()
-plt.plot(df['Cum_Ret'], color='green')
-plt.plot(df['Cum_Strategy'], color='yellow')
+plt.plot(df['Cum_Ret'], color='red')
+plt.plot(df['Cum_Strategy'], color='black')
 st.pyplot(fig)
