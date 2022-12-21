@@ -18,7 +18,7 @@ st.markdown(
     | Jorge Luis, Marin Evangelista | 2 |
     | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
     | Jorge Luis Quispe Alarcon | 4 |
-    | Wilker Edison,Atalaya Ramirez | - |
+    | Wilker Edison,Atalaya Ramirez | 5 |
     | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN) |
     | Carlos Daniel Tarmeño Noriega | K-Vecinos Cercanos(KNN) |
     | Nathaly Nicole Pichilingue Pimentel | Máquinas de vectores de soporte(SVC) y Random Forest(RF) |
@@ -27,7 +27,6 @@ st.markdown(
     **Donde muestra las predicciones/los resultados:**
     - Gráficamente. 
     - Númericamente los valores de las predicciones (print de dataframe con la predicción o clasificación).
-    - De modo textual presentar una recomendación.
     
     **Donde se muestra el EDA:**
     - Ploteo de los precios reales.
