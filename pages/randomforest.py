@@ -184,3 +184,5 @@ st.write("Nuestro puntaje de precisión del modelo es", p_scoremn)
 
 st.write("Vemos el porcentaje que logró predecir el modelo de que el precio iba a subir y/o bajar")
 st.table(predictions["Target"].value_counts() / predictions.shape[0])
+
+st.write("Haz llegado hasta el final de esta sección. Gracias")

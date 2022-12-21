@@ -14,7 +14,7 @@ st.markdown(
     # Grupo G - Integrantes:
     | Nombre | Participación|
     |--|--|
-    | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) |
+    | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) y Twitter |
     | Jorge Luis, Marin Evangelista | 2 |
     | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
     | Jorge Luis Quispe Alarcon | 4 |

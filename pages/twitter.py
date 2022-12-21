@@ -102,3 +102,5 @@ tweets_t.sentiment.value_counts().plot(kind='pie', autopct='%1.0f%%',  fontsize=
 plt.ylabel("Análisis de sentimiento en los últimos 300 tweets de la cuenta @PopBase", size=14)
 st.pyplot(fig3)
 
+st.write("Haz llegado hasta el final de esta sección. Gracias")
+

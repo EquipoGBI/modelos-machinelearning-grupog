@@ -83,3 +83,5 @@ fig = plt.figure()
 plt.plot(df['Cum_Ret'], color='red')
 plt.plot(df['Cum_Strategy'], color='blue')
 st.pyplot(fig)
+
+st.write("Haz llegado hasta el final de esta sección. Gracias")

@@ -115,3 +115,4 @@ fig = plt.figure()
 plt.legend()
 st.pyplot(fig)
 
+st.write("Haz llegado hasta el final de esta sección. Gracias")

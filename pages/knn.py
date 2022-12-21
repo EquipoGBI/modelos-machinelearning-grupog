@@ -99,3 +99,5 @@ st.markdown(
     - Si el modelo no funciona bien, puede probar con otros parametros o un conjunto de datos diferentes.
 """
 )
+
+st.write("Haz llegado hasta el final de esta sección. Gracias")
