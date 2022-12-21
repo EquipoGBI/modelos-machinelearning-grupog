@@ -14,12 +14,12 @@ st.markdown(
     # Grupo G - Integrantes:
     | Nombre | Participación|
     |--|--|
-    | Oscar Stalyn, Yanfer Laura | 1|
+    | Oscar Stalyn, Yanfer Laura | Long short-term memory (LSTM) |
     | Jorge Luis, Marin Evangelista | 2 |
-    | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR)|
-    | Jorge Luis Quispe Alarcon | 4|
+    | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
+    | Jorge Luis Quispe Alarcon | 4 |
     | Wilker Edison,Atalaya Ramirez | - |
-    | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN)|
+    | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN) |
     | Carlos Daniel Tarmeño Noriega | K-Vecinos Cercanos(KNN) |
     | Nathaly Nicole Pichilingue Pimentel | Máquinas de vectores de soporte(SVC) y Random Forest(RF) |
 
