@@ -97,5 +97,8 @@ tweets_t['sentiment'].value_counts().plot(kind = 'bar')
 st.pyplot(fig2)
 
 st.write("Visualización de resultados: Gráfico de pastel")
+fig3 = plt.figure()
 tweets_t.sentiment.value_counts().plot(kind='pie', autopct='%1.0f%%',  fontsize=12, figsize=(9,6), colors=["blue", "red", "yellow"])
 plt.ylabel("Análisis de sentimiento en los últimos 300 tweets de la cuenta @PopBase", size=14)
+st.pyplot(fig3)
+
