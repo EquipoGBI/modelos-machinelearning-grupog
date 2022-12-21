@@ -54,7 +54,7 @@ tweets_t.head(5)
 nltk.download('vader_lexicon')
 # Iniciamos el SentimentIntensityAnalyzer.
 vader = SentimentIntensityAnalyzer()
-
+st.write("Obtener solo los tweets")
 # Apply lambda function to get compound scores. Aplicamos una función lambda para obtener el puntaje compuesto
 function = lambda texto: vader.polarity_scores(texto)['compound']
 tweets_t['compound'] = tweets_t['Tweets'].apply(function)
@@ -80,7 +80,7 @@ def getAnalysis(score):
 
 tweets_t['sentiment'] = tweets_t['compound'].apply(getAnalysis)
 
-tweets_t.head(5)
+tweets_t
 
 print("Entre un grupo de 300 tweets tenemos: ")
 tweets_t['sentiment'].value_counts()
