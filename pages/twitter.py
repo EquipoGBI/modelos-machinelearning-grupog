@@ -47,18 +47,20 @@ tweets_df.info()
 #Obtenemos solo los tweets
 only_tweets = tweets_df.iloc[:, 3].values
 
+st.write("Visualizamos solo los tweets")
 #Asignamos esa lista de tweets a un dataframe
 tweets_t = pd.DataFrame({'Tweets': only_tweets})
-tweets_t.head(5)
+tweets_t
 
 nltk.download('vader_lexicon')
 # Iniciamos el SentimentIntensityAnalyzer.
 vader = SentimentIntensityAnalyzer()
-st.write("Obtener solo los tweets")
+
+st.write("Análisis de sentimiento")
 # Apply lambda function to get compound scores. Aplicamos una función lambda para obtener el puntaje compuesto
 function = lambda texto: vader.polarity_scores(texto)['compound']
 tweets_t['compound'] = tweets_t['Tweets'].apply(function)
-tweets_t.head(5)
+tweets_t
 
 # Realizamos su visualización en un WordCloud
 import seaborn as sns
@@ -66,9 +68,10 @@ import seaborn as sns
 allWords = ' '.join([twts for twts in tweets_t['Tweets']])
 wordCloud = WordCloud(width=500, height=300, random_state=21, max_font_size=110).generate(allWords)
 
-plt.imshow(wordCloud, interpolation="bilinear")
+fig = plt.imshow(wordCloud, interpolation="bilinear")
 plt.axis('off')
 plt.show()
+st.pyplot(fig)
 
 def getAnalysis(score):
  if score < 0:
