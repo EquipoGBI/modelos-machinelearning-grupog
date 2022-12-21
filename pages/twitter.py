@@ -7,18 +7,23 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import snscrape.modules.twitter as sntwitter
 import nltk
 
+ticker = st.text_input('Usuario en ingles a buscar', 'PopBase')
+st.write('El usuario actual es:', ticker)
+tic = yf.Ticker(ticker)
+tic
+
 # Creamos una lista donde guardaremos atributos de c/tweet (datos)
 attributes_container = []
 
 # Usamos TwitterSearchScraper para realizar scrapping y obtener los tweets, estamos seleccionando los útlimos 300 tweets
-for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:PopBase').get_items()):
+for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:'+tic).get_items()):
     if i>300:
         break
     attributes_container.append([tweet.date, tweet.likeCount, tweet.sourceLabel, tweet.content])
     
 # Creamos un dataframe para la lista de tweets obtenidos en el paso anterior
 tweets_df = pd.DataFrame(attributes_container, columns=["Date Created", "Number of Likes", "Source of Tweet", "Tweets"])
-
+st.write("Observamos el dataframe creado")
 tweets_df
 
 # Creamos una función que limpie el texto de cada tweet
@@ -32,6 +37,7 @@ def cleanTxt(text):
 #Aplicamos esta función a la columna "Tweets" de nuestro dataframe
 tweets_df["Tweets"] = tweets_df["Tweets"].apply(cleanTxt)
 
+st.write("Dataframe luego de la limpieza de datos")
 #Veamos nuevamente el dataframe
 tweets_df
 
