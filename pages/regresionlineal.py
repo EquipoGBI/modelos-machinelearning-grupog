@@ -52,8 +52,9 @@ import seaborn as sns
 plt.figure(1 , figsize = (17 , 8))
 cor = sns.heatmap(df.corr(), annot = True)
 
-x = df.loc[:,'high':'close']
-y = df.loc[:,'open']
+X = df[['Open-Close', 'High-Low']]
+X.head()
+y = np.where(df['Close'].shift(-1) > df['Close'], 1, 0)
 
 y.head()
 
