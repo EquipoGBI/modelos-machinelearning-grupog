@@ -9,6 +9,14 @@ import nltk
 import warnings
 import streamlit as st
 
+st.set_page_config(page_title="Twitter")
+
+st.markdown("#Twitter")
+st.sidebar.header("Analisis de sentimiento (Twitter)")
+st.write(
+    """En esta sección podras realizar un análisis de sentimientos de la cuenta de Twitter de tu preferencia"""
+)
+
 ticker = st.text_input('Usuario en ingles a buscar', 'PopBase')
 st.write('El usuario actual es:', ticker)
 
