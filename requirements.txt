@@ -31,3 +31,4 @@ toml==0.10.2
 urllib3==1.26.13
 yfinance==0.1.87
 Quandl==3.7.0
+wordcloud==1.8.2.2
