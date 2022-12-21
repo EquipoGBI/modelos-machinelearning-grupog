@@ -88,11 +88,13 @@ tweets_t
 st.write("Entre un grupo de 300 tweets tenemos: ")
 st.write(tweets_t['sentiment'].value_counts())
 
+st.write("Visualización de resultados: Gráfico de barras")
 plt.title('Análisis de sentimiento')
 plt.xlabel('Sentimiento')
 plt.ylabel('Conteo')
 tweets_t['sentiment'].value_counts().plot(kind = 'bar')
-plt.show()
+fig2 = plt.show()
+st.pyplot(fig2)
 
 tweets_t.sentiment.value_counts().plot(kind='pie', autopct='%1.0f%%',  fontsize=12, figsize=(9,6), colors=["blue", "red", "yellow"])
 plt.ylabel("Análisis de sentimiento en los últimos 300 tweets de la cuenta @PopBase", size=14)
