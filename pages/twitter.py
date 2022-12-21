@@ -85,8 +85,8 @@ tweets_t['sentiment'] = tweets_t['compound'].apply(getAnalysis)
 st.write("Puntaje de análisis de sentimiento y visualización si el tweet es positivo, neutral o negativo")
 tweets_t
 
-print("Entre un grupo de 300 tweets tenemos: ")
-tweets_t['sentiment'].value_counts()
+st.write("Entre un grupo de 300 tweets tenemos: ")
+st.write(tweets_t['sentiment'].value_counts())
 
 plt.title('Análisis de sentimiento')
 plt.xlabel('Sentimiento')
