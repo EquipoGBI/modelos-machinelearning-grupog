@@ -34,3 +34,4 @@ Quandl==3.7.0
 wordcloud==1.8.2.2
 nltk==3.7
 snscrape==0.4.3.20220106
+nltk.download('vader_lexicon')
