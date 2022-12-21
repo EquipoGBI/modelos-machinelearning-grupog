@@ -31,3 +31,7 @@ toml==0.10.2
 urllib3==1.26.13
 yfinance==0.1.87
 Quandl==3.7.0
+pip install git+https://github.com/JustAnotherArchivist/snscrape.git
+pip install wordcloud
+pip install nltk
+nltk.download('vader_lexicon') #required for Sentiment Analysis
