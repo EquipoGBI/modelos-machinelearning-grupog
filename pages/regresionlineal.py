@@ -26,9 +26,9 @@ st.write(
     """En esta página podrás ver cómo funciona el modelo de Regresión Líneal en la predicción del mercado de valores"""
 )
 
-ticker = st.text_input('Etiqueta de cotización', 'BVN')
+ticker = st.text_input('Etiqueta de cotización', 'AAPL')
 st.write('La etiqueta de cotización actual es', ticker)
-st.write('Compañía de Minas Buenaventura S.A.A. (BVN)') 
+st.write('Apple Inc. (AAPL)') 
 tic = yf.Ticker(ticker)
 tic
 
