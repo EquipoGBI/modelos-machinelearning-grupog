@@ -34,7 +34,7 @@ plt.style.use('seaborn-darkgrid')
 warnings.filterwarnings("ignore")
 
 
-st.set_page_config(page_title="PEN", page_icon="📈",
+st.set_page_config(page_title="RNN", page_icon="📈",
                    layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("# PEN")
@@ -56,6 +56,11 @@ st.write('La etiqueta de cotización actual es', ticker)
 tic = yf.Ticker(ticker)
 hist = tic.history(period="max", auto_adjust=True)
 
+st.write("date time")
+testdf = yf.download("PEN", start="2022-03-31",
+                     end=dt.datetime.now(), progress=False)
+testdf
 
-hist = tic.history(period="max", auto_adjust=True)
-hist
+st.write("Realizar la preparación de datos de RNN model entrenamiento ")
+training_set = hist.iloc[:, 1:2].values
+training_set
