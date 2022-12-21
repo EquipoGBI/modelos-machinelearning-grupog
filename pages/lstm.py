@@ -37,6 +37,7 @@ hist
 ###########################
 import time
 import math
+from tensorflow import keras
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 from keras.layers import LSTM
@@ -44,7 +45,7 @@ import numpy as np
 import pandas as pd
 import sklearn.preprocessing as prep
 ###########################
-st.write("Dataframe obtenido")
+st.write("Dataframe obtenidode AAPL")
 df = hist
 df.head()
 ###########################
