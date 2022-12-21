@@ -11,8 +11,8 @@ import streamlit as st
 
 st.set_page_config(page_title="Twitter")
 
-st.markdown("#Twitter")
-st.sidebar.header("Analisis de sentimiento (Twitter)")
+st.markdown("# Analisis de sentimiento (Twitter)")
+st.sidebar.header("Twitter")
 st.write(
     """En esta sección podras realizar un análisis de sentimientos de la cuenta de Twitter de tu preferencia"""
 )
