@@ -3,8 +3,8 @@ import warnings
 import streamlit as st
 
 # Machine learning
-from sklearn.svm import SVR
 from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LinearRegression
 
 # For data manipulation
 import pandas as pd
@@ -18,80 +18,71 @@ plt.style.use('fivethirtyeight')
 warnings.filterwarnings("ignore")
 
 
-st.set_page_config(page_title="LSTM")
+st.set_page_config(page_title="LR")
 
-st.markdown("# SVR")
-st.sidebar.header("SVR")
+st.markdown("# LR")
+st.sidebar.header("LR")
 st.write(
-    """En esta página podrás ver cómo funciona el modelo SVR en la predicción del mercado de valores"""
+    """En esta página podrás ver cómo funciona el modelo de Regresión Líneal en la predicción del mercado de valores"""
 )
 
-ticker = st.text_input('Etiqueta de cotización', 'AAPL')
+ticker = st.text_input('Etiqueta de cotización', 'BVN')
 st.write('La etiqueta de cotización actual es', ticker)
-st.write('Apple Inc. (AAPL)') 
+st.write('Compañía de Minas Buenaventura S.A.A. (BVN)') 
 tic = yf.Ticker(ticker)
 tic
 
 hist = tic.history(period="max", auto_adjust=True)
 hist
-###########################
-###########################
-st.write("Dataframe obtenidode AAPL")
+
 df = hist
-df.head()
+df.info()
 
-import pandas as pd
-import matplotlib.pyplot as plt 
-import quandl 
-from sklearn.linear_model import LinearRegression
+# Crea variables predictoras
+df['Open-Close'] = df.Open - df.Close
+df['High-Low'] = df.High - df.Low
 
-df.isnull().sum()
-
-st.write('Mapa de calor') 
-import seaborn as sns
-plt.figure(1 , figsize = (17 , 8))
-cor = sns.heatmap(df.corr(), annot = True)
-
+# Guarda todas las variables predictoras en una variable X
 X = df[['Open-Close', 'High-Low']]
 X.head()
+
+# Variables objetivas
 y = np.where(df['Close'].shift(-1) > df['Close'], 1, 0)
 
-y.head()
+split_percentage = 0.8
+split = int(split_percentage*len(df))
 
-from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.1,random_state = 101)
+# Train data set
+X_train = X[:split]
+y_train = y[:split]
+
+# Test data set
+X_test = X[split:]
+y_test = y[split:]
 
 LR = LinearRegression()
+LR.fit(X_train,y_train)
 
-LR.fit(x_train,y_train)
+df['Predicted_Signal'] = LR.predict(X)
 
-LR.score(x_test,y_test)
+# Calcula los retornos diarios
+df['Return'] = df.Close.pct_change()
 
-#Evaluación del Modelo
-#Se evalua el modelo comprobando sus coeficientes.
-#Se imprime el interceptor
-#print(LR.intercept_)
+# Calcula retornos de estrategia
+df['Strategy_Return'] = df.Return * df.Predicted_Signal.shift(1)
 
-coeff_df = pd.DataFrame(LR.coef_,x.columns,columns=['Coeficiente'])
-coeff_df
+# Calcula retornos acumulativos
+df['Cum_Ret'] = df['Return'].cumsum()
+st.write("Dataframe con retornos acumulativos")
+df
 
-x_test.head()
+# Haz un plot de retornos de estrategia acumulativos
+df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
+st.write("Dataframe con retornos de estrategia acumulativos")
+df
 
-predictions = LR.predict(x_test)
-predictions
-
-plt.scatter(y_test,predictions)
-
-sns.displot((y_test-predictions),bins=50);
-
-#MÉTRICAS
-
-from sklearn import metrics
-
-print('MAE:', metrics.mean_absolute_error(y_test, predictions))
-print('MSE:', metrics.mean_squared_error(y_test, predictions))
-print('RMSE:', np.sqrt(metrics.mean_squared_error(y_test, predictions)))
-
-import matplotlib.pyplot as plt
-#%matplotlib inline
-plt.plot(predictions,color='red')
+st.write("Devoluciones de la estrategia de trama frente a las devoluciones originales")
+fig = plt.figure()
+plt.plot(df['Cum_Ret'], color='green')
+plt.plot(df['Cum_Strategy'], color='yellow')
+st.pyplot(fig)
