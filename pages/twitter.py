@@ -51,6 +51,7 @@ only_tweets = tweets_df.iloc[:, 3].values
 tweets_t = pd.DataFrame({'Tweets': only_tweets})
 tweets_t.head(5)
 
+nltk.download('vader_lexicon')
 # Iniciamos el SentimentIntensityAnalyzer.
 vader = SentimentIntensityAnalyzer()
 
