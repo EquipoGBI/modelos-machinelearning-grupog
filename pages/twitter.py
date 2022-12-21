@@ -67,7 +67,7 @@ import seaborn as sns
 
 allWords = ' '.join([twts for twts in tweets_t['Tweets']])
 wordCloud = WordCloud(width=500, height=300, random_state=21, max_font_size=110).generate(allWords)
-
+st.write("Visualización en un WordCloud")
 plt.imshow(wordCloud, interpolation="bilinear")
 plt.axis('off')
 fig1 = plt.show()
@@ -82,7 +82,7 @@ def getAnalysis(score):
     return 'Positive'
 
 tweets_t['sentiment'] = tweets_t['compound'].apply(getAnalysis)
-
+st.write("Puntaje de análisis de sentimiento y visualización si el tweet es positivo, neutral o negativo")
 tweets_t
 
 print("Entre un grupo de 300 tweets tenemos: ")
