@@ -40,9 +40,9 @@ df.info()
 
 st.write("Mapa de calor de las variables")
 import seaborn as sns
-plt.figure(1 , figsize = (17 , 8))
+fig_ = plt.figure(1 , figsize = (17 , 8))
 cor = sns.heatmap(df.corr(), annot = True)
-st.pyplot(cor)
+st.pyplot(fig_)
 
 # Crea variables predictoras
 df['Open-Close'] = df.Open - df.Close
