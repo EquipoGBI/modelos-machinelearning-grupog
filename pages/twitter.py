@@ -6,6 +6,8 @@ from wordcloud import WordCloud, STOPWORDS
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import snscrape.modules.twitter as sntwitter
 import nltk
+import warnings
+import streamlit as st
 
 ticker = st.text_input('Usuario en ingles a buscar', 'PopBase')
 st.write('El usuario actual es:', ticker)
