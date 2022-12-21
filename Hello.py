@@ -14,7 +14,7 @@ st.markdown(
     # Grupo G - Integrantes:
     | Nombre | Participación|
     |--|--|
-    | Oscar Stalyn, Yanfer Laura | Long short-term memory (LSTM) |
+    | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) |
     | Jorge Luis, Marin Evangelista | 2 |
     | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
     | Jorge Luis Quispe Alarcon | 4 |
