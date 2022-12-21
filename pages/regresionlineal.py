@@ -38,9 +38,6 @@ hist
 df = hist
 df.info()
 
-st.write("Visualización de valores nulos")
-st.print(df.isnull().sum())
-
 st.write("Mapa de calor de las variables")
 import seaborn as sns
 plt.figure(1 , figsize = (17 , 8))
