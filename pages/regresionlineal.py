@@ -39,12 +39,13 @@ df = hist
 df.info()
 
 st.write("Visualización de valores nulos")
-df.isnull().sum()
+st.print(df.isnull().sum())
 
 st.write("Mapa de calor de las variables")
 import seaborn as sns
 plt.figure(1 , figsize = (17 , 8))
 cor = sns.heatmap(df.corr(), annot = True)
+st.pyplot(cor)
 
 # Crea variables predictoras
 df['Open-Close'] = df.Open - df.Close
