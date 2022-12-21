@@ -68,10 +68,10 @@ import seaborn as sns
 allWords = ' '.join([twts for twts in tweets_t['Tweets']])
 wordCloud = WordCloud(width=500, height=300, random_state=21, max_font_size=110).generate(allWords)
 
-fig = plt.imshow(wordCloud, interpolation="bilinear")
+plt.imshow(wordCloud, interpolation="bilinear")
 plt.axis('off')
-plt.show()
-st.pyplot(fig)
+fig1 = plt.show()
+st.pyplot(fig1)
 
 def getAnalysis(score):
  if score < 0:
