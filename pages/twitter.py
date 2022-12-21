@@ -89,11 +89,11 @@ st.write("Entre un grupo de 300 tweets tenemos: ")
 st.write(tweets_t['sentiment'].value_counts())
 
 st.write("Visualización de resultados: Gráfico de barras")
+fig2 = plt.figure()
 plt.title('Análisis de sentimiento')
 plt.xlabel('Sentimiento')
 plt.ylabel('Conteo')
 tweets_t['sentiment'].value_counts().plot(kind = 'bar')
-fig2 = plt.figure()
 st.pyplot(fig2)
 
 st.write("Visualización de resultados: Gráfico de pastel")
