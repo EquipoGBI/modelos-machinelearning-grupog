@@ -58,5 +58,9 @@ for i in range(60, 566):
     y_train.append(training_set_scaled[i, 0])
 X_train,  y_train = np.array(X_train), np.array(y_train)
 X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
+#ponle un titulo 
+st.write("## Grafica de los datos de entrenamiento x")
 st.line_chart(X_train[0])
-st.line_chart([X_train[0], y_train[0]])
+
+st.write("## Grafica de los datos de entrenamiento y ")
+st.line_chart(y_train[:100])
