@@ -36,14 +36,27 @@ st.write('La etiqueta de cotización actual es', ticker)
 
 tic = yf.Ticker(ticker)
 hist = tic.history(period="max", auto_adjust=True)
-hist.head(5)
+hist
 st.write("## Date time")
 testdf = yf.download("PEN", start="2022-03-31",
                      end=dt.datetime.now(), progress=False)
 # que se vean los 6 primeros
-testdf.head(6)
+testdf
 
 st.write("## Realizar la preparación de datos de RNN model entrenamiento ")
 training_set = hist.iloc[:, 1:2].values
 # QUE SE vean los 5 primeros
 training_set[:5]
+st.write('Minimos y Maximos')
+sc = MinMaxScaler(feature_range=(0, 1))
+training_set_scaled = sc.fit_transform(training_set)
+X_train = []
+y_train = []
+
+for i in range(60, 566):
+    X_train.append(training_set_scaled[i-60:i, 0])
+    y_train.append(training_set_scaled[i, 0])
+X_train,  y_train = np.array(X_train), np.array(y_train)
+X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
+st.line_chart(X_train[0])
+st.line_chart([X_train[0], y_train[0]])

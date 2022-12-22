@@ -64,6 +64,7 @@ st.markdown(
     """
 )
 
+
 def f(x, sigma):
     epsilon = np.random.randn(*x.shape) * sigma
     return 10 * np.sin(2 * np.pi * (x)) + epsilon
@@ -77,16 +78,16 @@ X = np.linspace(-0.5, 0.5, train_size).reshape(-1, 1)
 y = f(X, sigma=noise)
 y_true = f(X, sigma=0.0)
 
-fig = plt.figure(figsize=(10,6),dpi=250)
+fig = plt.figure(figsize=(10, 6), dpi=250)
 plt.scatter(X, y, marker='+', label='Training data')
 plt.plot(X, y_true, label='Truth')
 plt.title('Noisy training data and ground truth')
-plt.legend();
+plt.legend()
 st.pyplot(fig)
 
 st.write("El ruido en los datos de entrenamiento da lugar a una incertidumbre aleatoria. Para cubrir esta incertidumbre epistémica, se implementa la lógica de inferencia variacional en una capa DenseVariational.")
 
-
+"""
 from keras import backend as K
 from keras import activations, initializers
 from keras.layers import Layer
@@ -223,3 +224,5 @@ plt.title('Prediction')
 plt.legend();
 
 st.write("Podemos ver claramente en el gráfico anterior que la incertidumbre epistémica es mucho mayor en regiones sin datos de entrenamiento que en regiones con datos de entrenamiento existentes.")
+
+"""
