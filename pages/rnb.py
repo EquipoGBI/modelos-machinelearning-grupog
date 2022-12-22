@@ -38,12 +38,12 @@ warnings.filterwarnings("ignore")
 st.set_page_config(page_title="RNB")
 st.markdown("# RNB")
 st.sidebar.header("RNB")
-st.write(
-    "
+st.markdown(
+    """
     #Redes Neuronales Bayesianas
     A partir del artículo encontrado se buscará implementar y capacitar una red neuronal bayesiana con la ayuda de la herramienta Keras después del cálculo de la incertidumbre de peso en las redes neuronales.  
     Para lograr tal objetivo se utilizará también la herramienta Tensor Flow.
-    "
+    """
 )
 
 st.markdown(
