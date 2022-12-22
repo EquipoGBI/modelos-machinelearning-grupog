@@ -77,10 +77,12 @@ X = np.linspace(-0.5, 0.5, train_size).reshape(-1, 1)
 y = f(X, sigma=noise)
 y_true = f(X, sigma=0.0)
 
+fig = plt.figure(figsize=(10,6),dpi=250)
 plt.scatter(X, y, marker='+', label='Training data')
 plt.plot(X, y_true, label='Truth')
 plt.title('Noisy training data and ground truth')
 plt.legend();
+st.pyplot(fig)
 
 st.write("El ruido en los datos de entrenamiento da lugar a una incertidumbre aleatoria. Para cubrir esta incertidumbre epistémica, se implementa la lógica de inferencia variacional en una capa DenseVariational.")
 
