@@ -66,4 +66,5 @@ st.line_chart(X_train[0])
 st.write("## Grafica de los datos de entrenamiento y ")
 st.line_chart(y_train[:100])
 
-st.write("## Iniciarlizar modelo RNN ")
+st.write("## Ver data obtenida  ")
+st.image("../images/preddiccion.PNG", caption="Data obtenida")
