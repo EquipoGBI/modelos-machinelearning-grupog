@@ -15,13 +15,13 @@ st.markdown(
     | Nombre | Participación|
     |--|--|
     | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) y Twitter |
-    | Jorge Luis, Marin Evangelista | 2 |
     | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
     | Jorge Luis Quispe Alarcon | 4 |
     | Wilker Edison,Atalaya Ramirez | 5 |
     | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN) |
     | Carlos Daniel Tarmeño Noriega | K-Vecinos Cercanos(KNN) |
     | Nathaly Nicole Pichilingue Pimentel | Máquinas de vectores de soporte(SVC) y Random Forest(RF) |
+    | Jorge Luis, Marin Evangelista | Redes Neuronales Bayesianas (RNB) |
 
     ### Especificaciones:
     **Donde muestra las predicciones/los resultados:**
