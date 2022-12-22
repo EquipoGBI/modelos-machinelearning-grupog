@@ -79,6 +79,3 @@ for i in range(60, 566):
     y_train.append(training_set_scaled[i, 0])
 X_train,  y_train = np.array(X_train), np.array(y_train)
 X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
-st.line_chart(X_train)
-st.line_chart(y_train)
-st.line_chart([X_train[0], y_train[0]])
