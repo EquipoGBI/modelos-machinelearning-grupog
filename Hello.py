@@ -14,9 +14,9 @@ st.markdown(
     # Grupo G - Integrantes:
     | Nombre | Participación|
     |--|--|
-    | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) y Twitter |
+    | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) |
     | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
-    | Jorge Luis Quispe Alarcon | 4 |
+    | Jorge Luis Quispe Alarcon | Twitter |
     | Wilker Edison,Atalaya Ramirez | 5 |
     | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN) |
     | Carlos Daniel Tarmeño Noriega | K-Vecinos Cercanos(KNN) |
