@@ -67,5 +67,5 @@ st.write("## Grafica de los datos de entrenamiento y ")
 st.line_chart(y_train[:100])
 
 st.write("## Ver data obtenida  ")
-st.image("https://drive.google.com/drive/u/1/folders/17cqhd_H-ROe80p4K6s_jwZmTgOX_cDjQ",
-         caption="Data obtenida")
+st.image("https://drive.google.com/file/d/1eYxghc9bDUGIKzGw_78P0PVP8VPLP7Ai/view?sharing&export=download",
+         caption="Rnn data", use_column_width=True)
