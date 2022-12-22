@@ -46,21 +46,21 @@ st.write(
     "
 )
 
-st.write(
-    "
+st.markdown(
+    """
     Como toda red neuronal bayesiana, se caracteriza por asignar una distribución de probabilidad en lugar de un solo valor o estimación. Por tal motivo estas distribuciones de probabilidad se encargan de describir la incertidumbre de los pesos y se utiliza para estimar la incertidumbre en las predicciones.
     ###Fuente de la replicación:
     - https://www.sciencedirect.com/science/article/abs/pii/S0893608021000356  
     - https://nbviewer.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-neural-networks/bayesian_neural_networks.ipynb
-    "
+    """
 )
 
-st.write(
-    "
+st.markdown(
+    """
     ## Implementación
     La inferencia variacional de los parámetros de la red neuronal ahora se demuestra en un problema de regresión simple. Por lo tanto se hará uso de una distribución Gaussiana.  
     El conjunto de datos de entrenamiento en este ejemplo consta de 32 muestras.
-    "
+    """
 )
 
 def f(x, sigma):
