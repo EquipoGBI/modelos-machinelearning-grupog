@@ -61,5 +61,5 @@ from sklearn import tree
 import graphviz
 fig3 = plt.figure()
 data = tree.export_graphviz(treeClassifier,filled=True,feature_names=list_of_features, class_names=np.array(['0','1']))
-graphviz.Source(data)
-st.pyplot(fig3)
+
+st.pyplot(graphviz.Source(data))
