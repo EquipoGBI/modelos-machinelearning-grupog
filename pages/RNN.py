@@ -67,4 +67,5 @@ st.write("## Grafica de los datos de entrenamiento y ")
 st.line_chart(y_train[:100])
 
 st.write("## Ver data obtenida  ")
-st.image("../images/preddiccion.PNG", caption="Data obtenida")
+st.image("https://drive.google.com/file/d/1eYxghc9bDUGIKzGw_78P0PVP8VPLP7Ai/view?usp=sharing",
+         caption="Data obtenida")
