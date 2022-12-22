@@ -9,9 +9,7 @@ import yfinance as yf
 import warnings
 import streamlit as st
 from math import sqrt
-from keras.models import Sequential
-from keras.layers.core import Dense, Activation, Dropout
-from keras.layers import LSTM
+
 # To plot
 plt.style.use('seaborn-darkgrid')
 
@@ -69,23 +67,3 @@ st.write("## Grafica de los datos de entrenamiento y ")
 st.line_chart(y_train[:100])
 
 st.write("## Iniciarlizar modelo RNN ")
-regressor = Sequential()
-
-# añadir el primer LSTM Layer y regularizaciones
-regressor.add(LSTM(units=50, return_sequences=True,
-              input_shape=(X_train.shape[1], 1)))
-regressor.add(Dropout(0.2))
-
-# añadir un segundo lstm y regularizar el dropout
-regressor.add(LSTM(units=50, return_sequences=True))
-regressor.add(Dropout(0.2))
-# añadir un tercer lstm y regularizar el dropout
-regressor.add(LSTM(units=50, return_sequences=True))
-regressor.add(Dropout(0.2))
-# añadir un cuarto lstm y regularizar el dropout
-regressor.add(LSTM(units=50))
-regressor.add(Dropout(0.2))
-
-regressor.add(Dense(units=1))
-
-regressor.compile(optimizer='adam', loss='mean_squared_error')
