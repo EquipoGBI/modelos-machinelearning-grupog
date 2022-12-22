@@ -18,6 +18,12 @@ st.write('La etiqueta de cotización actual es', ticker)
 tic = yf.Ticker(ticker)
 tic
 
+hist = tic.history(period="max", auto_adjust=True)
+hist
+
+df = hist
+df.info()
+
 plt.plot(df['Close'])
 
 df['Return'] = df['Adj Close'].pct_change(60).shift(-60)
