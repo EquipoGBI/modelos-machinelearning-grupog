@@ -86,7 +86,7 @@ st.pyplot(fig)
 
 st.write("El ruido en los datos de entrenamiento da lugar a una incertidumbre aleatoria. Para cubrir esta incertidumbre epistémica, se implementa la lógica de inferencia variacional en una capa DenseVariational.")
 
-"""
+
 from keras import backend as K
 from keras import activations, initializers
 from keras.layers import Layer
@@ -223,5 +223,3 @@ plt.title('Prediction')
 plt.legend();
 
 st.write("Podemos ver claramente en el gráfico anterior que la incertidumbre epistémica es mucho mayor en regiones sin datos de entrenamiento que en regiones con datos de entrenamiento existentes.")
-
-"""
