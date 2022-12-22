@@ -26,6 +26,7 @@ El conjunto de datos de entrenamiento en este ejemplo consta de 32 muestras.
 import pandas as pd
 import numpy as np
 import streamlit as st
+import warnings
 import matplotlib.pyplot as plt
 
 # to ignore
