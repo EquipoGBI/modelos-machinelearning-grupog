@@ -68,4 +68,4 @@ st.line_chart(y_train[:100])
 
 st.write("## Ver data obtenida  ")
 # llama a prediccion.PNG
-st.image("prediccion.PNG", use_column_width=True, caption="Prediccion")
+st.image("./img/preddiccion.PNG", use_column_width=True, caption="Prediccion")
