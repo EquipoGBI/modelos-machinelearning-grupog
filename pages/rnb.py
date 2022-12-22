@@ -35,32 +35,32 @@ warnings.filterwarnings("ignore")
 # %matplotlib inline
 
 # Streamlit
-st.set_page_config(page_title="BNN")
-st.markdown("# BNN")
-st.sidebar.header("BNN")
+st.set_page_config(page_title="RNB")
+st.markdown("# RNB")
+st.sidebar.header("RNB")
 st.write(
-    """
+    "
     #Redes Neuronales Bayesianas
     A partir del artículo encontrado se buscará implementar y capacitar una red neuronal bayesiana con la ayuda de la herramienta Keras después del cálculo de la incertidumbre de peso en las redes neuronales.  
     Para lograr tal objetivo se utilizará también la herramienta Tensor Flow.
-    """
+    "
 )
 
 st.write(
-    """
+    "
     Como toda red neuronal bayesiana, se caracteriza por asignar una distribución de probabilidad en lugar de un solo valor o estimación. Por tal motivo estas distribuciones de probabilidad se encargan de describir la incertidumbre de los pesos y se utiliza para estimar la incertidumbre en las predicciones.
     ###Fuente de la replicación:
     - https://www.sciencedirect.com/science/article/abs/pii/S0893608021000356  
     - https://nbviewer.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-neural-networks/bayesian_neural_networks.ipynb
-    """
+    "
 )
 
 st.write(
-    """
+    "
     ## Implementación
     La inferencia variacional de los parámetros de la red neuronal ahora se demuestra en un problema de regresión simple. Por lo tanto se hará uso de una distribución Gaussiana.  
     El conjunto de datos de entrenamiento en este ejemplo consta de 32 muestras.
-    """
+    "
 )
 
 def f(x, sigma):
@@ -83,9 +83,9 @@ plt.legend();
 
 st.write
 (
-    """
+    "
     El ruido en los datos de entrenamiento da lugar a una incertidumbre aleatoria. Para cubrir esta incertidumbre epistémica, se implementa la lógica de inferencia variacional en una capa DenseVariational.
-    """
+    "
 )
 
 from keras import backend as K
@@ -162,9 +162,9 @@ class DenseVariational(Layer):
 
 st.write
 (
-    """
+    "
     El modelo implementado es una red neuronal con dos capas ocultas DenseVariational, cada una con 20 unidades, y una capa de salida DenseVariational con una unidad. En lugar de modelar una distribución de probabilidad completa como salida, la red simplemente genera la media de la distribución gaussiana correspondiente.
-    """
+    "
 )
 
 import warnings
@@ -192,9 +192,9 @@ model = Model(x_in, x)
 
 st.write
 (
-    """
+    "
     La red ahora se puede entrenar con una función de probabilidad logarítmica negativa gaussiana (neg_log_likelihood) como función de pérdida suponiendo una desviación estándar fija (ruido).
-    """
+    "
 )
 
 from keras import callbacks, optimizers
@@ -208,9 +208,9 @@ model.fit(X, y, batch_size=batch_size, epochs=1500, verbose=0);
 
 st.write
 (
-    """
+    "
     En la implementación al llamar a model.predict extraemos una muestra aleatoria de la distribución posterior variacional y la usamos para calcular el valor de salida de la red. A partir de estas predicciones podemos calcular estadísticas como la media y la desviación estándar.
-    """
+    "
 )
 
 import tqdm
@@ -238,7 +238,7 @@ plt.legend();
 
 st.write
 (
-    """
+    "
     Podemos ver claramente en el gráfico anterior que la incertidumbre epistémica es mucho mayor en regiones sin datos de entrenamiento que en regiones con datos de entrenamiento existentes.
-    """
+    "
 )
