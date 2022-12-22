@@ -56,21 +56,6 @@ report = classification_report(y_test,y_pred)
 st.write(report)
 
 
-df['Predicted_Signal'] = cls.predict(X)
-# Calcula los retornos diarios
-df['Return'] = df.Close.pct_change()
-# Calcula retornos de estrategia
-df['Strategy_Return'] = df.Return * df.Predicted_Signal.shift(1)
-# Calcula retornos acumulativos
-df['Cum_Ret'] = df['Return'].cumsum()
-st.write("Dataframe con retornos acumulativos")
-df
-# Haz un plot de retornos de estrategia acumulativos
-df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
-st.write("Dataframe con retornos de estrategia acumulativos")
-df
-
-
 
 from sklearn import tree
 import graphviz
