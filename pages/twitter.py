@@ -17,7 +17,7 @@ st.write(
     """En esta sección podras realizar un análisis de sentimientos de la cuenta de Twitter de tu preferencia, se seleccionarán 300 tweets para la evaluación."""
 )
 
-ticker = st.text_input('Usuario en ingles a buscar:', 'PopBase')
+ticker = st.text_input('Usuario en inglés a buscar:', 'PopBase')
 st.write('El usuario actual es:', ticker)
 
 # Creamos una lista donde guardaremos atributos de c/tweet (datos)
