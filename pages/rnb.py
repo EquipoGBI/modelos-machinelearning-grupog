@@ -28,6 +28,7 @@ import numpy as np
 import streamlit as st
 import warnings
 import matplotlib.pyplot as plt
+import keras
 
 # to ignore
 warnings.filterwarnings("ignore")
@@ -40,7 +41,7 @@ st.markdown("# RNB")
 st.sidebar.header("RNB")
 st.markdown(
     """
-    #Redes Neuronales Bayesianas
+    # Redes Neuronales Bayesianas
     A partir del artículo encontrado se buscará implementar y capacitar una red neuronal bayesiana con la ayuda de la herramienta Keras después del cálculo de la incertidumbre de peso en las redes neuronales.  
     Para lograr tal objetivo se utilizará también la herramienta Tensor Flow.
     """
@@ -48,8 +49,8 @@ st.markdown(
 
 st.markdown(
     """
-    Como toda red neuronal bayesiana, se caracteriza por asignar una distribución de probabilidad en lugar de un solo valor o estimación. Por tal motivo estas distribuciones de probabilidad se encargan de describir la incertidumbre de los pesos y se utiliza para estimar la incertidumbre en las predicciones.
-    ###Fuente de la replicación:
+    Como toda red neuronal bayesiana, se caracteriza por asignar una distribución de probabilidad en lugar de un solo valor o estimación. Por tal motivo estas distribuciones de probabilidad se encargan de describir la incertidumbre de los pesos y se utiliza para estimar la incertidumbre en las predicciones.  
+    ### Fuente de la replicación:
     - https://www.sciencedirect.com/science/article/abs/pii/S0893608021000356  
     - https://nbviewer.org/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-neural-networks/bayesian_neural_networks.ipynb
     """
@@ -158,8 +159,8 @@ class DenseVariational(Layer):
 st.write("El modelo implementado es una red neuronal con dos capas ocultas DenseVariational, cada una con 20 unidades, y una capa de salida DenseVariational con una unidad. En lugar de modelar una distribución de probabilidad completa como salida, la red simplemente genera la media de la distribución gaussiana correspondiente.")
 
 
-import warnings
-warnings.filterwarnings('ignore')
+# import warnings
+# warnings.filterwarnings('ignore')
 
 from keras.layers import Input
 from keras.models import Model
