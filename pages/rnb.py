@@ -25,7 +25,11 @@ El conjunto de datos de entrenamiento en este ejemplo consta de 32 muestras.
 # Commented out IPython magic to ensure Python compatibility.
 import pandas as pd
 import numpy as np
+import streamlit as st
 import matplotlib.pyplot as plt
+
+# to ignore
+warnings.filterwarnings("ignore")
 
 # %matplotlib inline
 
