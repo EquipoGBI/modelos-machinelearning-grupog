@@ -24,19 +24,27 @@ hist
 df = hist
 df.info()
 
-plt.plot(df['Close'])
+# Crea variables predictoras
+df['Open-Close'] = df.Open - df.Close
+df['High-Low'] = df.High - df.Low
 
-df['Return'] = df['Adj Close'].pct_change(60).shift(-60)
-list_of_features = ['High','Low','Close','Volume','Adj Close']
-X= df[list_of_features]
-y=np.where(df.Return > 0,1,0)
+# Guarda todas las variables predictoras en una variable X
+X = df[['Open-Close', 'High-Low']]
+X.head()
 
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=423)
-print(X_train.shape)
-print(X_test.shape)
-print(y_train.shape)
-print(y_test.shape)
+# Variables objetivas
+y = np.where(df['Close'].shift(-1) > df['Close'], 1, 0)
+
+split_percentage = 0.8
+split = int(split_percentage*len(df))
+
+# Train data set
+X_train = X[:split]
+y_train = y[:split]
+
+# Test data set
+X_test = X[split:]
+y_test = y[split:]
 
 treeClassifier = DecisionTreeClassifier(max_depth=3, min_samples_leaf=6)
 treeClassifier.fit(X_train, y_train)
@@ -45,7 +53,23 @@ y_pred = treeClassifier.predict(X_test)
 
 from sklearn.metrics import classification_report
 report = classification_report(y_test,y_pred)
-print(report)
+st.write(report)
+
+
+df['Predicted_Signal'] = cls.predict(X)
+# Calcula los retornos diarios
+df['Return'] = df.Close.pct_change()
+# Calcula retornos de estrategia
+df['Strategy_Return'] = df.Return * df.Predicted_Signal.shift(1)
+# Calcula retornos acumulativos
+df['Cum_Ret'] = df['Return'].cumsum()
+st.write("Dataframe con retornos acumulativos")
+df
+# Haz un plot de retornos de estrategia acumulativos
+df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
+st.write("Dataframe con retornos de estrategia acumulativos")
+df
+
 
 
 from sklearn import tree
