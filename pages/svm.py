@@ -22,7 +22,6 @@ import seaborn as sns
 # To plot
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-darkgrid')
-%matplotlib inline
   
 # To ignore warnings
 import warnings
