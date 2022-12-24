@@ -65,7 +65,3 @@ st.line_chart(X_train[0])
 # ponle un nombre a esa leyenda
 st.write("## Grafica de los datos de entrenamiento y ")
 st.line_chart(y_train[:100])
-
-st.write("## Ver data obtenida  ")
-# llama a prediccion.PNG
-st.image("./img/preddiccion.PNG", use_column_width=True, caption="Prediccion")
