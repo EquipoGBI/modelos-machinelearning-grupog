@@ -90,11 +90,63 @@ X_test = scaler.transform(X_test)
 
 
 
+# import SVC classifier
+from sklearn.svm import SVC
 
 
+# import metrics to compute accuracy
+from sklearn.metrics import accuracy_score
 
 
+# instantiate classifier with default hyperparameters
+svc=SVC() 
 
 
+# fit classifier to training set
+svc.fit(X_train,y_train)
 
+
+# make predictions on test set
+y_pred=svc.predict(X_test)
+
+# instantiate classifier with rbf kernel and C=100
+svc=SVC(C=100.0) 
+
+
+# fit classifier to training set
+svc.fit(X_train,y_train)
+
+
+# make predictions on test set
+y_pred=svc.predict(X_test)
+
+
+# compute and print accuracy score
+print('Model accuracy score with rbf kernel and C=100.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+
+
+# instantiate classifier with rbf kernel and C=1000
+svc=SVC(C=1000.0) 
+
+
+# fit classifier to training set
+svc.fit(X_train,y_train)
+
+
+# make predictions on test set
+y_pred=svc.predict(X_test)
+
+
+# compute and print accuracy score
+print('Model accuracy score with rbf kernel and C=1000.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+
+
+y_pred_train = linear_svc.predict(X_train)
+
+y_pred_train
+
+
+from sklearn.metrics import classification_report
+
+print(classification_report(y_test, y_pred_test))
 
