@@ -23,9 +23,11 @@ model = Pipeline([
 
 # Train the model on the training data
 model.fit(X_train, y_train)
+model
 
 # Test the model on the test data
 y_pred = model.predict(X_test)
+y_pred
 
 # Calculate accuracy
 accuracy = (y_pred == y_test).mean()
@@ -52,6 +54,8 @@ plt.imshow(confusion, cmap='binary', interpolation='none')
 plt.colorbar()
 plt.xlabel('true label')
 plt.ylabel('predicted label')
+plt
 
 # Plot feature importance
 model.named_steps['svm'].plot_importance(precision=3)
+model
