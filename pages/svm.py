@@ -104,7 +104,7 @@ svc=SVC()
 
 # fit classifier to training set
 svc.fit(X_train,y_train)
-
+svc
 
 # make predictions on test set
 y_pred=svc.predict(X_test)
@@ -115,7 +115,7 @@ svc=SVC(C=100.0)
 
 # fit classifier to training set
 svc.fit(X_train,y_train)
-
+svc
 
 # make predictions on test set
 y_pred=svc.predict(X_test)
@@ -131,22 +131,10 @@ svc=SVC(C=1000.0)
 
 # fit classifier to training set
 svc.fit(X_train,y_train)
-
+svc
 
 # make predictions on test set
 y_pred=svc.predict(X_test)
+y_pred
 
-
-# compute and print accuracy score
-print('Model accuracy score with rbf kernel and C=1000.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
-
-
-y_pred_train = linear_svc.predict(X_train)
-
-y_pred_train
-
-
-from sklearn.metrics import classification_report
-
-print(classification_report(y_test, y_pred_test))
 
