@@ -62,7 +62,7 @@ df
 
 ##ver la distribución porcentual de la columna Stock Splits
 df['Stock Splits'].value_counts()/np.float(len(df))
-print(ddf['Stock Splits'].value_counts()/np.float(len(df)))
+print(df['Stock Splits'].value_counts()/np.float(len(df)))
 
 df.isnull().sum()
 df
