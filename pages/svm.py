@@ -1,61 +1,73 @@
-import yfinance as yf
+
+
+
+ ###################################
+from sklearn.metrics import accuracy_score
 import pandas as pd
-from sklearn.svm import SVC
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import train_test_split
-
-# Get stock data for BVN from yahoo finance
-bvn = yf.Ticker("BVN").history(period="max")
-bvn 
-
-# Select relevant columns
-X = bvn[['Open', 'Close', 'Volume']]
-y = bvn['Close'].shift(-1) > bvn['Close']
-
-# Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Create a pipeline with a StandardScaler and an SVM
-model = Pipeline([
-    ('scaler', StandardScaler()),
-    ('svm', SVC(kernel='rbf', C=1))
-])
-
-# Train the model on the training data
-model.fit(X_train, y_train)
-model
-
-# Test the model on the test data
-y_pred = model.predict(X_test)
-y_pred
-
-# Calculate accuracy
-accuracy = (y_pred == y_test).mean()
-print(f'Accuracy: {accuracy:.2f}')
-
-
-from sklearn.metrics import classification_report, confusion_matrix
+import numpy as np
 import matplotlib.pyplot as plt
 
-# Test the model on the test data
-y_pred = model.predict(X_test)
 
-# Calculate accuracy
-accuracy = (y_pred == y_test).mean()
-print(f'Accuracy: {accuracy:.2f}')
+import yfinance as yf
+plt.style.use('seaborn-darkgrid')
 
-# Print classification report
-report = classification_report(y_test, y_pred)
-print(report)
+from sklearn.metrics import classification_report,confusion_matrix
+import streamlit as st
 
-# Plot confusion matrix
-confusion = confusion_matrix(y_test, y_pred)
-plt.imshow(confusion, cmap='binary', interpolation='none')
-plt.colorbar()
-plt.xlabel('true label')
-plt.ylabel('predicted label')
-plt
+# Machine learning
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
+  
+# For data manipulation
+import pandas as pd
+import numpy as np
+import seaborn as sns
+  
+# To plot
+import matplotlib.pyplot as plt
+plt.style.use('seaborn-darkgrid')
+  
+# To ignore warnings
+import warnings
+warnings.filterwarnings("ignore")
+
+
+st.set_page_config(page_title="SVM")
+
+
+st.markdown("# SVM")
+st.sidebar.header("SVM")
+st.write(
+    """El contenido de la página permite visualizar resultados de predicción de precios de acciones utilizando el modelo SVM."""
+)
+
+ticker1 = st.text_input('Etiqueta de cotización', 'bvn')
+st.write('La etiqueta de cotización actual es', ticker1)
+
+bvn = yf.Ticker(ticker1)
+hist = bvn.history(period="max", auto_adjust=True)
+hist.head()
+df = hist
+
+df.info()
+
+
+
+df['Stock Splits'].value_counts()
+df
+
+
+
+##ver la distribución porcentual de la columna Stock Splits
+df['Stock Splits'].value_counts()/np.float(len(df))
+df
+
+df.isnull().sum()
+df
+
+
+round(df.describe(),2)
+
 
 #Declarar vector de características y variable de destino
 X = df.drop(['Stock Splits'], axis=1)
@@ -203,3 +215,68 @@ from sklearn.metrics import classification_report
 
 report = classification_report(y_test, y_pred_train)
 print(report)
+
+#####################
+# Get stock data for BVN from yahoo finance
+bvn = yf.Ticker("BVN").history(period="max")
+bvn 
+
+# Select relevant columns
+X = bvn[['Open', 'Close', 'Volume']]
+y = bvn['Close'].shift(-1) > bvn['Close']
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create a pipeline with a StandardScaler and an SVM
+model = Pipeline([
+    ('scaler', StandardScaler()),
+    ('svm', SVC(kernel='rbf', C=1))
+])
+
+# Train the model on the training data
+model.fit(X_train, y_train)
+model
+
+# Test the model on the test data
+y_pred = model.predict(X_test)
+y_pred
+
+# Calculate accuracy
+accuracy = (y_pred == y_test).mean()
+print(f'Accuracy: {accuracy:.2f}')
+
+split_percentage = 0.8
+split = int(split_percentage*len(df))
+
+# Train data set
+X_train = X[:split]
+y_train = y[:split]
+
+# Test data set
+X_test = X[split:]
+y_test = y[split:]
+
+from sklearn.svm import SVM
+cls = SVM().fit(X_train, y_train)
+
+
+df['Predicted_Signal'] = cls.predict(X)
+# Calcula los retornos diarios
+df['Return'] = df.Close.pct_change()
+# Calcula retornos de estrategia
+df['Strategy_Return'] = df.Return * df.Predicted_Signal.shift(1)
+# Calcula retornos acumulativos
+df['Cum_Ret'] = df['Return'].cumsum()
+st.write("Dataframe con retornos acumulativos")
+df
+# Haz un plot de retornos de estrategia acumulativos
+df['Cum_Strategy'] = df['Strategy_Return'].cumsum()
+st.write("Dataframe con retornos de estrategia acumulativos")
+df
+
+st.write("Plot Strategy Returns vs Original Returns")
+fig = plt.figure()
+plt.plot(df['Cum_Ret'], color='red')
+plt.plot(df['Cum_Strategy'], color='blue')
+st.pyplot(fig)
