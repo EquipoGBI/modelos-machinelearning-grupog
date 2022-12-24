@@ -138,3 +138,65 @@ y_pred=svc.predict(X_test)
 y_pred
 
 
+# compute and print accuracy score
+print('Model accuracy score with rbf kernel and C=1000.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+
+# instantiate classifier with linear kernel and C=1.0
+linear_svc=SVC(kernel='linear', C=1.0) 
+
+
+# fit classifier to training set
+linear_svc.fit(X_train,y_train)
+
+
+# make predictions on test set
+y_pred_test=linear_svc.predict(X_test)
+
+
+# compute and print accuracy score
+print('Model accuracy score with linear kernel and C=1.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred_test)))
+
+
+# instantiate classifier with linear kernel and C=100.0
+linear_svc100=SVC(kernel='linear', C=100.0) 
+
+
+# fit classifier to training set
+linear_svc100.fit(X_train, y_train)
+
+
+# make predictions on test set
+y_pred=linear_svc100.predict(X_test)
+
+
+# compute and print accuracy score
+print('Model accuracy score with linear kernel and C=100.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+
+
+# instantiate classifier with linear kernel and C=1000.0
+linear_svc1000=SVC(kernel='linear', C=1000.0) 
+
+
+# fit classifier to training set
+linear_svc1000.fit(X_train, y_train)
+
+
+# make predictions on test set
+y_pred=linear_svc1000.predict(X_test)
+
+
+# compute and print accuracy score
+print('Model accuracy score with linear kernel and C=1000.0 : {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+
+
+
+y_pred_train = linear_svc.predict(X_train)
+y_pred_train
+
+
+print('Training-set accuracy score: {0:0.4f}'. format(accuracy_score(y_train, y_pred_train)))
+
+
+
+
+
