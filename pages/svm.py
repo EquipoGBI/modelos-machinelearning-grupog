@@ -50,15 +50,16 @@ df.info()
 
 
 df['Stock Splits'].value_counts()
+df
 
 
 
 ##ver la distribución porcentual de la columna Stock Splits
 df['Stock Splits'].value_counts()/np.float(len(df))
-
+df
 
 df.isnull().sum()
-
+df
 
 
 round(df.describe(),2)
@@ -109,3 +110,5 @@ plt.subplot(4, 2, 7)
 fig = df.boxplot(column='Stock Splits')
 fig.set_title('')
 fig.set_ylabel('Stock Splits')
+
+fig
