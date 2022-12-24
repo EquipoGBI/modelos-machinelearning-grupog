@@ -58,9 +58,7 @@ st.write("La variable discreta es la variable Stock Splits. También es la varia
 df['Stock Splits'].value_counts()
 df
 
-
-
-##ver la distribución porcentual de la columna Stock Splits
+st.write("ver la distribución porcentual de la columna Stock Splits")
 df['Stock Splits'].value_counts()/np.float(len(df))
 print(df['Stock Splits'].value_counts()/np.float(len(df)))
 
