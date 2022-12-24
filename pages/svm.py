@@ -62,6 +62,10 @@ st.write("ver la distribución porcentual de la columna Stock Splits")
 df['Stock Splits'].value_counts()/np.float(len(df))
 print(df['Stock Splits'].value_counts()/np.float(len(df)))
 st.write("Podemos ver que el porcentaje de observaciones de la etiqueta de clase 0 y 2 es 99.97% y 0.029%. Entonces, este es un problema de desequilibrio de clases.")
+
+
+
+st.write("Explorando valores faltantes en las variables;Podemos ver que no faltan valores en el conjunto de datos.")
 df.isnull().sum()
 df
 
