@@ -17,7 +17,7 @@ st.markdown(
     | Oscar Stalyn, Yanfer Laura | Regresión líneal (RL) |
     | Diego Tharlez Montalvo Ortega | Support Vector Regression (SVR) |
     | Jorge Luis Quispe Alarcon | Twitter |
-    | Wilker Edison,Atalaya Ramirez | 5 |
+    | Wilker Edison,Atalaya Ramirez | Máquinas de vectores de soporte (SVM) |
     | Anthony Elias,Ricse Perez | Red Neuronal Recurrente(RNN) |
     | Carlos Daniel Tarmeño Noriega | K-Vecinos Cercanos(KNN) |
     | Nathaly Nicole Pichilingue Pimentel | Máquinas de vectores de soporte(SVC) y Random Forest(RF) |
