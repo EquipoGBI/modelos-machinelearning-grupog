@@ -201,4 +201,8 @@ from sklearn.metrics import classification_report
 
 print(classification_report(y_test, y_pred_test))
 
-
+st.write("Plot Strategy Returns vs Original Returns")
+fig = plt.figure()
+plt.plot(df[y_test], color='red')
+plt.plot(df[y_pred_test], color='blue')
+st.pyplot(fig)
