@@ -197,6 +197,8 @@ y_pred_train
 print('Training-set accuracy score: {0:0.4f}'. format(accuracy_score(y_train, y_pred_train)))
 
 
+from sklearn.metrics import classification_report
 
+print(classification_report(y_test, y_pred_test))
 
 
