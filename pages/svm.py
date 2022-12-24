@@ -207,5 +207,5 @@ plt.plot(y_test, color='red')
 plt.plot(y_pred_test, color='blue')
 st.pyplot(fig)
 
-report = classification_report(y_test, y_pred_test)
+report = classification_report(y_test, y_pred_train)
 print(report)
