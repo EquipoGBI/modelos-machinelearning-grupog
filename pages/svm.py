@@ -65,50 +65,36 @@ df
 round(df.describe(),2)
 
 
-# draw boxplots to visualize outliers
-
-plt.figure(figsize=(24,20))
-
-
-plt.subplot(4, 2, 1)
-fig = df.boxplot(column='Open')
-fig.set_title('')
-fig.set_ylabel('Open')
+#Declarar vector de características y variable de destino
+X = df.drop(['Stock Splits'], axis=1)
+y = df['Stock Splits']
 
 
-plt.subplot(4, 2, 2)
-fig = df.boxplot(column='High')
-fig.set_title('')
-fig.set_ylabel('High')
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 
-plt.subplot(4, 2, 3)
-fig = df.boxplot(column='Low')
-fig.set_title('')
-fig.set_ylabel('Low')
+X_train.shape, X_test.shape
+
+cols = X_train.columns
 
 
-plt.subplot(4, 2, 4)
-fig = df.boxplot(column='Close')
-fig.set_title('')
-fig.set_ylabel('Close')
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+
+X_train = scaler.fit_transform(X_train)
+
+X_test = scaler.transform(X_test)
 
 
-plt.subplot(4, 2, 5)
-fig = df.boxplot(column='Volume')
-fig.set_title('')
-fig.set_ylabel('Volume')
 
 
-plt.subplot(4, 2, 6)
-fig = df.boxplot(column='Dividends')
-fig.set_title('')
-fig.set_ylabel('Dividends')
 
 
-plt.subplot(4, 2, 7)
-fig = df.boxplot(column='Stock Splits')
-fig.set_title('')
-fig.set_ylabel('Stock Splits')
 
-fig
+
+
+
+
