@@ -44,6 +44,8 @@ st.write(
 ticker1 = st.text_input('Etiqueta de cotización', 'bvn')
 st.write('La etiqueta de cotización actual es', ticker1)
 
+
+st.write("Leemos los datos a usar, con la libería de yfinance, veremos datos sobre **Compañía de Minas Buenaventura SAA (BVN)**")
 bvn = yf.Ticker(ticker1)
 hist = bvn.history(period="max", auto_adjust=True)
 hist.head()
