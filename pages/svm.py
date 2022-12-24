@@ -54,7 +54,7 @@ df = hist
 df.info()
 
 
-
+st.write("La variable discreta es la variable Stock Splits. También es la variable objetivo.")
 df['Stock Splits'].value_counts()
 df
 
@@ -62,7 +62,7 @@ df
 
 ##ver la distribución porcentual de la columna Stock Splits
 df['Stock Splits'].value_counts()/np.float(len(df))
-df
+print(ddf['Stock Splits'].value_counts()/np.float(len(df)))
 
 df.isnull().sum()
 df
